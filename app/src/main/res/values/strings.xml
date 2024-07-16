@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">MeGo</string>
+
+    // Onboarding
+    <string name="onboarding_continue_button">Продолжить</string>
+    <string name="onboarding_submit_button">Начать</string>
+    <string name="onboarding_skip_button">Пропустить</string>
+
+
+    <string name="onboarding_title_1">Найди свой идеальный тур</string>
+    <string name="onboarding_description_1">Выбирай из сотен предложений и находи туры, которые соответствуют твоим предпочтениям</string>
+
+    <string name="onboarding_title_2">Вдохновляйся историями</string>
+    <string name="onboarding_description_2">Читай увлекательные истории и советы от путешественников. Лайкай, комментируй и сохраняй лучшие посты</string>
+
+    <string name="onboarding_title_3">Делись впечатлениями</string>
+    <string name="onboarding_description_3">Расскажи о своих поездках и помогай другим путешественникам делать правильный выбор</string>
+</resources>
