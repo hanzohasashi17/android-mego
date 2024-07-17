@@ -1,40 +1,29 @@
 package com.example.mego.ui.screens.onboarding.ui
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.mego.R
 import com.example.mego.ui.composables.CommonSubmitButton
+import com.example.mego.ui.composables.onboard.PageIndicator
 import com.example.mego.ui.composables.onboard.SkipButton
 import com.example.mego.ui.theme.Dimension
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen() {
-
     val pagerState = rememberPagerState(pageCount = { 3 }, initialPage = 0)
     val coroutineScope = rememberCoroutineScope()
 
@@ -42,33 +31,17 @@ fun OnboardingScreen() {
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = Dimension.COMMON_WIDTH_WRAP.dp)
-            .statusBarsPadding(),
-        verticalArrangement = Arrangement.SpaceBetween
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .statusBarsPadding(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Row(
-                Modifier
-                    .wrapContentHeight()
-                    .wrapContentWidth()
-                    .padding(bottom = 8.dp),
-            ) {
-                repeat(pagerState.pageCount) { iteration ->
-                    val color =
-                        if (pagerState.currentPage == iteration) MaterialTheme.colorScheme.primary else Color.LightGray
-                    Box(
-                        modifier = Modifier
-                            .padding(2.dp)
-                            .clip(CircleShape)
-                            .background(color)
-                            .size(16.dp)
-                    )
-                }
-            }
+            PageIndicator(
+                pagerState = pagerState
+            )
             SkipButton(
                 onSkipClick = {
                     coroutineScope.launch {
